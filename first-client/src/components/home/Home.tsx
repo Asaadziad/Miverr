@@ -7,6 +7,7 @@ const Home: FunctionComponent<HomeProps> = () => {
   return (
     <>
       <Navbar />
+      <div className="container mt-5">test</div>
     </>
   );
 };

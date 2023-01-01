@@ -21,7 +21,9 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
               </li>
             </ul>
           </div>
-          <div className="nav-profile">Profile goes here</div>
+          <div className="nav-profile">
+            <Link to="/Profile">Profile</Link>
+          </div>
         </div>
       </nav>
     </>

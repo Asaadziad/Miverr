@@ -5,11 +5,14 @@ interface ProductsProps {}
 
 const Products: FunctionComponent<ProductsProps> = () => {
   const [products, setProducts] = useState<any>(null);
-  useEffect(() => {
-    axios
+  async function getProducts() {
+    const res = await axios
       .get("/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
+  }
+  useEffect(() => {
+    getProducts();
   }, []);
   return (
     <div className="container mt-5">
