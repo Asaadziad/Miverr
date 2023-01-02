@@ -8,8 +8,28 @@
 .nav-main {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+
+  gap: 20px;
+}
+.nav-main a {
+  text-decoration: none;
+  color: var(--black);
+}
+.nav-main a:hover {
+  color: var(--green);
+}
+.nav-main a.register-btn {
+  border: 1px solid var(--green);
+  padding: 2px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 5px;
+}
+.nav-main a.register-btn:hover {
+  background-color: var(--green);
+  color: #fff;
 }
 .nav-categories {
   width: 100%;
@@ -32,7 +52,19 @@
   font-size: small;
   height: 100%;
 }
+.category a {
+  text-decoration: none;
+  color: var(--black);
+}
 .category:hover {
   cursor: pointer;
   box-shadow: inset 0 -3px 0 0 var(--green);
+}
+
+.brand a {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: bolder;
+  font-size: xx-large;
+  letter-spacing: -5px;
 }

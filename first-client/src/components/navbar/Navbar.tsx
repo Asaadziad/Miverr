@@ -18,7 +18,9 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
     };
   }, []);
 
-  return <>{responsive ? <NavbarResponsive /> : <NavbarFull />}</>;
+  return (
+    <>{responsive ? <NavbarResponsive /> : <NavbarFull isLogged={false} />}</>
+  );
 };
 
 export default Navbar;
