@@ -1,1 +1,27 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@500&display=swap");
+/** 	
+#5191fd	(81,145,253) blue
+#eaadea	rgb(234,173,234) pink
+#50caa3	rgb(80,202,163) green
+#191919	rgb(25,25,25) black
+#e5e5e5	rgb(229,229,229) white
+//font-family: "Montserrat", sans-serif;
+  //font-family: "Roboto", sans-serif;
+**/
+
+:root {
+  --blue: rgb(81, 145, 253);
+  --white: rgb(229, 229, 229);
+  --pink: rgb(234, 173, 234);
+  --black: rgb(25, 25, 25);
+  --green: rgb(80, 202, 163);
+  --white-light: rgba(229, 229, 229, 0.8);
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+
+  font-family: "Roboto Mono", monospace;
+}

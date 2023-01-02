@@ -1,33 +1,24 @@
-import { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { FunctionComponent, useEffect, useState } from "react";
 import "./navbar.css";
+import NavbarFull from "./NavbarFull";
+import NavbarResponsive from "./NavbarResponsive";
 interface NavbarProps {}
 
 const Navbar: FunctionComponent<NavbarProps> = () => {
-  return (
-    <>
-      <nav>
-        <div className="container-fluid navContainer">
-          <div className="nav">
-            <Link to="/" className="nav-brand">
-              AZ-Tech
-            </Link>
-            <ul className="nav-links">
-              <li className="nav-item">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/Shop">Shop</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="nav-profile">
-            <Link to="/Profile">Profile</Link>
-          </div>
-        </div>
-      </nav>
-    </>
-  );
+  const [responsive, setResponsive] = useState(false);
+  useEffect(() => {
+    function handleResize() {
+      setResponsive(window.innerWidth > 768 ? false : true);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return <>{responsive ? <NavbarResponsive /> : <NavbarFull />}</>;
 };
 
 export default Navbar;

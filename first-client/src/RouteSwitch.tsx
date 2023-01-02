@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Programming from "./components/categories/Programming";
 import Home from "./components/home/Home";
 import Profile from "./components/profile/Profile";
 import SignIn from "./components/profile/SignIn";
@@ -17,6 +18,7 @@ const RouteSwitch: FunctionComponent<RouteSwitchProps> = () => {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/programming" element={<Programming />} />
       </Routes>
     </BrowserRouter>
   );
