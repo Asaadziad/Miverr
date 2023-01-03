@@ -16,8 +16,8 @@ const RouteSwitch: FunctionComponent<RouteSwitchProps> = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Shop" element={<Shop />} />
         <Route path="/Profile" element={<Profile />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/programming" element={<Programming />} />
       </Routes>
     </BrowserRouter>

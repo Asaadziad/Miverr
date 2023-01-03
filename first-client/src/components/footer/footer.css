@@ -1,0 +1,38 @@
+footer {
+  border-top: 1px solid black;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+footer a {
+  text-decoration: none;
+  color: var(--black);
+  padding: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: large;
+  font-weight: bolder;
+}
+footer a:hover {
+  background-color: rgb(19, 19, 19, 0.1);
+  color: var(--black);
+  border-radius: 50%;
+}
+.companyCopyRights {
+  font-size: x-large;
+  letter-spacing: -3px;
+}
+.copyRights {
+  color: grey;
+  margin-left: 20px;
+  font-size: 1rem;
+
+  letter-spacing: 0;
+}
+@media screen and (max-width: 425px) {
+  .copyRights {
+    display: none;
+  }
+}

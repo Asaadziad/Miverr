@@ -17,6 +17,7 @@
   --black: rgb(25, 25, 25);
   --green: rgb(80, 202, 163);
   --white-light: rgba(229, 229, 229, 0.8);
+  --danger: rgb(223, 71, 89);
 }
 
 body {
@@ -24,4 +25,34 @@ body {
   color: var(--black);
 
   font-family: "Roboto Mono", monospace;
+}
+
+.secTitle {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.newLabel::after {
+  content: "NEW";
+  border: 1px solid transparent;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: medium;
+  background-color: var(--danger);
+  border: 1px solid var(--danger);
+  color: var(--white-light);
+}
+
+section {
+  height: 100vh;
+  background-color: #fff;
+}
+
+.btn.btn-primary {
+  background-color: var(--green);
+  border: 1px solid var(--green);
+}
+.btn.btn-primary:focus {
+  background-color: var(--green);
 }
