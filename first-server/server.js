@@ -1,36 +1,25 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const bcrypt = require("bcrypt");
-
 const app = express();
+const dotenv = require("dotenv");
+const cors = require("cors");
+const connection = require("./src/services/db");
+const userRoutes = require("./src/routes/users");
 
-const mongoDB = "mongodb://127.0.0.1:27017/miverr-db";
-mongoose.set("strictQuery", false);
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
+//Dotenv configuration start
+dotenv.config();
 
-app.use(cors());
+const port = process.env.PORT || 5000;
+
+//db connection start
+connection();
+
+//Middlewares
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
-const User = require("./src/utilities/User");
-app.post("/signup", async (req, res, next) => {
-  try {
-    const user = new User({
-      username: req.body.username,
-      password: req.body.password,
-    });
-    const savedUser = user.save();
-    res.status(201).json(savedUser);
-    console.log("worked");
-  } catch (e) {
-    console.log(e.message);
-  }
-});
+//Routes
+app.use("/api/users", userRoutes);
 
-app.listen(5000, () => {
+app.listen(port, () => {
   console.log("Server started listening on port 5000");
 });

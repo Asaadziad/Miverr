@@ -47,8 +47,8 @@ const NavbarResponsive: FunctionComponent<NavbarResponsiveProps> = ({
           ) : (
             <>
               <div className="burger navLinks main">
-                <NavLink to="/" className="register-btn">
-                  Home
+                <NavLink to="/" className="register-btn res">
+                  Join now
                 </NavLink>
                 <ul>
                   <li>
