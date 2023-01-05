@@ -1,8 +1,7 @@
 import axios from "axios";
 import { FunctionComponent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../footer/Footer";
-import Navbar from "../navbar/Navbar";
+
 import "./signup.css";
 interface SignUpProps {}
 
@@ -21,7 +20,6 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
   };
   return (
     <>
-      <Navbar />
       <section>
         <div className="container signContainer p-5">
           <div className="signup">
@@ -63,7 +61,6 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 };

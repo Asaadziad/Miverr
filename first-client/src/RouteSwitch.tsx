@@ -1,7 +1,9 @@
 import { FunctionComponent } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Programming from "./components/categories/Programming";
+import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
+import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
 import SignIn from "./components/profile/SignIn";
 import SignUp from "./components/profile/SignUp";
@@ -12,6 +14,7 @@ interface RouteSwitchProps {}
 const RouteSwitch: FunctionComponent<RouteSwitchProps> = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Shop" element={<Shop />} />
@@ -20,6 +23,7 @@ const RouteSwitch: FunctionComponent<RouteSwitchProps> = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/programming" element={<Programming />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
