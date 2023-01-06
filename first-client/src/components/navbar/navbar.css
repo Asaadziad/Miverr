@@ -171,3 +171,11 @@ a.register-btn:hover {
 }
 @media screen and (max-width: 450px) {
 }
+
+.profileArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+}

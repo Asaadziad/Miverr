@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connection = require("./src/services/db");
-const userRoutes = require("./src/routes/users");
+const userRoutes = require("./src/routes/usersRoute");
 
 //Dotenv configuration start
 dotenv.config();

@@ -19,17 +19,22 @@ const NavbarFull: FunctionComponent<NavbarFullProps> = ({ isLogged }) => {
           ></input>
         </div>
         <div className="nav-main profile">
+          <NavLink to="/signin">Explore</NavLink>
+          <NavLink to="/signin">Become a Seller</NavLink>
           {!isLogged ? (
             <>
-              <NavLink to="/signin">Explore</NavLink>
-              <NavLink to="/signin">Become a Seller</NavLink>
               <NavLink to="/signin">Sign in</NavLink>
               <NavLink to="/signup" className="register-btn">
                 Join
               </NavLink>
             </>
           ) : (
-            <p>Profile goes here</p>
+            <span className="profileArea">
+              <i className="fa fa-user-circle fa-xl mt-1"></i>
+              <NavLink to="/profile">
+                <i className="fa fa-sort-down mb-2 ms-2"></i>
+              </NavLink>
+            </span>
           )}
         </div>
       </div>

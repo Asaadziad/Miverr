@@ -21,9 +21,9 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
   return (
     <>
       {responsive ? (
-        <NavbarResponsive isLogged={false} />
+        <NavbarResponsive isLogged={true} />
       ) : (
-        <NavbarFull isLogged={false} />
+        <NavbarFull isLogged={true} />
       )}
     </>
   );
