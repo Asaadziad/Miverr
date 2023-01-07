@@ -15,7 +15,8 @@ const registerUser = async (req, res) => {
       password: hashedPassword,
     });
     await user.save();
-
+    const accessToken = generateToken(user._id);
+    res.json({ accessToken });
     res.status(201).send({ message: "User created successfully" });
   } catch (err) {
     console.log(err);
@@ -30,7 +31,11 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (user && (await bcrypt.compare(password, user.password))) {
-      res.json({ accessToken: generateToken(user._id) });
+      const token = generateToken(user._id);
+      let options = {
+        httpOnly: true, // The cookie only accessible by the web server
+      };
+      res.cookie("tokenKey", token, options).json({ accessToken: token });
     } else {
       res.status(400);
     }
@@ -43,9 +48,9 @@ const loginUser = async (req, res) => {
 //@desc get Data
 //@route /api/users/me
 const getMe = async (req, res) => {
-  const data = await User.findById(req.user.id);
-  res.json(data);
-  console.log(req.user);
+  const data = req.cookies;
+
+  console.log(data);
 };
 
 //Generate JWT

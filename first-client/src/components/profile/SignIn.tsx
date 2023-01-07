@@ -26,7 +26,6 @@ const SignIn: FunctionComponent<SignInProps> = () => {
       try {
         const url = "http://localhost:5000/api/users/login";
         await axios.post(url, data);
-        console.log("Logged in");
         navigate("/");
       } catch (err) {
         console.log(err);

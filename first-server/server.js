@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connection = require("./src/services/db");
 const userRoutes = require("./src/routes/usersRoute");
+const cookieParser = require("cookie-parser");
 
 //Dotenv configuration start
 dotenv.config();
@@ -16,6 +17,7 @@ connection();
 //Middlewares
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 //Routes
 app.use("/api/users", userRoutes);
