@@ -16,8 +16,9 @@ const registerUser = async (req, res) => {
     });
     await user.save();
     const accessToken = generateToken(user._id);
-    res.json({ accessToken });
-    res.status(201).send({ message: "User created successfully" });
+    res
+      .status(201)
+      .send({ message: "User created successfully", token: accessToken });
   } catch (err) {
     console.log(err);
     res.status(500).send({ message: "Internal server error" });
@@ -28,6 +29,9 @@ const registerUser = async (req, res) => {
 //@route POST /api/users/login
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
+  if (!email || !password) {
+    res.send("{'status':'failed','message':'all field are required'}");
+  }
   try {
     const user = await User.findOne({ email });
     if (user && (await bcrypt.compare(password, user.password))) {
@@ -35,9 +39,12 @@ const loginUser = async (req, res) => {
       let options = {
         httpOnly: true, // The cookie only accessible by the web server
       };
-      res.cookie("tokenKey", token, options).json({ accessToken: token });
+      res
+        .status(201)
+        .cookie("tokenKey", token, options)
+        .json({ status: 201, token: token });
     } else {
-      res.status(400);
+      res.status(400).send("ERROR");
     }
   } catch (err) {
     console.log(err);
@@ -46,11 +53,21 @@ const loginUser = async (req, res) => {
 };
 
 //@desc get Data
-//@route /api/users/me
+//@route GET /api/users/me
 const getMe = async (req, res) => {
-  const data = req.cookies;
-
-  console.log(data);
+  const userID = req.user._id;
+  const user = await User.findById(userID);
+  res.json(user);
+  /* try {
+    const user = await User.findById(userID);
+    if (!user) {
+      res.status(400).json({ status: "failed", message: "No user" });
+    } else {
+      res.status(201).json(user);
+    }
+  } catch (error) {
+    console.log(error);
+  }*/
 };
 
 //Generate JWT

@@ -18,6 +18,9 @@ const SignIn: FunctionComponent<SignInProps> = () => {
       password: yup.string().required(),
     }),
     onSubmit: async (event: any) => {
+      const config = {
+        headers: { "Content-type": "application/json" },
+      };
       let data = {
         email: formik.values.email,
         password: formik.values.password,
@@ -25,8 +28,15 @@ const SignIn: FunctionComponent<SignInProps> = () => {
 
       try {
         const url = "http://localhost:5000/api/users/login";
-        await axios.post(url, data);
-        navigate("/");
+        const dataRes = await axios
+          .post(url, { ...data }, config)
+          .then((res) => {
+            let token = res.data.token;
+            sessionStorage.setItem("tokenKey", token);
+          })
+          .catch((err) => console.log(err));
+
+        navigate("/profile");
       } catch (err) {
         console.log(err);
       }
